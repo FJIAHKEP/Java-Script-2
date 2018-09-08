@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<style>
+	.container {
+		width: 800px;
+		margin: 0 auto;
+	}
+	.container > div {
+		display: flex;
+		width: 500px;
+		margin: 0 auto;
+	}
+	.container > div > form {
+		display: flex;
+		flex-direction: column;
+	}
+	.container > div > form > button {
+		width: 50%;
+		margin: 0 auto;
+	}
+	textarea {
+		padding: 15px;
+		margin: 5px;
+		outline: none;
+	}
+	.done {
+		background: greenyellow;
+	}
+	.notDone {
+		background: orangered;
+	}
+	.sendText1, .clearText {
+		padding: 5px;
+		outline: none;
+		cursor: pointer;
+		border-radius: 15%;
+		margin: 15px auto !important;
+		border: 1px solid black;
+	}
+	.clearText {
+		background: oldlace;
+		margin: 15px auto !important;
+		border: 1px solid black;
+	}
+	.sendText1:hover {
+		filter: brightness(90%);
+	}
+	.clearText:hover {
+		filter: brightness(90%);
+	}
+
+</style>
+<body>
+<div class="container">
+	<div>
+		<form action="#">
+			<textarea style="resize: none;" id="anyText1" cols="30" rows="10" autofocus spellcheck="false"></textarea>
+			<button type="submit" class="sendText1 notDone">Edit</button>
+		</form>
+		<form action="#">
+			<textarea style="resize: none;" id="anyText2" cols="30" rows="10" autofocus spellcheck="false"></textarea>
+			<button type="submit" class="clearText">Clear</button>
+		</form>
+	</div>
+</div>
+
+<!--
+1. Дан большой текст, в котором для обозначения диалогов используются одинарные кавычки. 
+Придумать шаблон,
+который меняет одинарные кавычки на двойные.
+2. Улучшить шаблон таким образом, чтобы конструкции типа aren’t не меняли одинарную кавычку на двойную.
+-->
+<script>
+
+	var pushTextArea = document.getElementById('anyText2');
+	var button = document.querySelector('.sendText1');
+	var buttonClearText = document.querySelector('.clearText');
+	var anyText1 = document.getElementById('anyText1');
+	anyText1.textContent = ' \' Ann\'s cat. aren\'t \' ';
+
+	button.onclick = function () {
+		var getTextAreaValue = document.getElementById('anyText1').value;
+		button.classList.remove('notDone');
+		button.classList.add('done');
+		button.textContent = 'Done';
+		pushTextArea.innerHTML = getTextAreaValue.replace(/\B'|'\B/g, '"');
+	};
+
+	buttonClearText.onclick = function () {
+		pushTextArea.textContent = "";
+		button.textContent = 'Edit';
+		button.classList.remove('done');
+		button.classList.add('notDone');
+	};
+
+
+
+</script>
+</body>
+</html>
