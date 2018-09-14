@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Feedback Form</title>
+	<style>
+		.container {
+			margin: 50px auto;
+			border: 1px solid silver;
+			padding: 10px;
+			width: 250px;
+			display: flex;
+			justify-content: center;
+			border-radius: 10%;
+			background: #b88cb536;
+		}
+		input {
+			outline: none;
+			border: 2px solid silver;
+			display: block;
+			margin: 10px 0;
+			padding: 5px 10px;
+		}
+		textarea {
+			display: block;
+			height: 70px;
+			width: 200px;
+			margin: 10px 0;
+		}
+		a {
+			display: inline-block;
+			padding: 5px 10px;
+			background: #fff;
+			border: 1px solid silver;
+			text-decoration: none;
+			color: #333;
+			transition: .2s all;
+		}
+		a:active {
+			background: silver;
+		}
+		#login {
+			text-transform: capitalize;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<form action="#">
+		<label for="имени" id="loginLabel">Имя:</label>
+		<input type="text" name="имени" id="login" login-placeholder="enter your login name" class="field" autofocus>
+		<label for="почты" id="emailLabel">Адрес почты:</label>
+		<input type="text" name="почты" id="email" email-placeholder="enter your email" class="field">
+		<label for="телефона" id="phoneLabel">Телефон:</label>
+		<input type="text" name="телефона" id="phone" phone-placeholder="enter your phone number" class="field">
+		<p><select id="cityList" name="city">
+		</select></p>
+		<label for="message">Ваше сообшение:</label>
+		<textarea name="message" id="message" style="resize: none;" cols="30" rows="10" spellcheck="false"></textarea>
+		<a href="javascript:validate()">Отправить форму</a>
+	</form>
+</div>
+<script src="jquery-3.3.1.js"></script>
+<script src="script.js"></script>
+</body>
+
+</html>
