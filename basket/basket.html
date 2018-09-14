@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="Container.js"></script>
+    <script src="BasketModule/Good.js"></script>
+    <script src="BasketModule/Basket.js"></script>
+    <script>
+			"use strict";
+
+        $(document).ready(function () {
+            var good1 = new Good(125, 'Клавиатура для ПК', 1000);
+            good1.render($('#goods'));
+
+            var good2 = new Good(126, 'Коврик для мыши', 400);
+            good2.render($('#goods'));
+
+            var basket = new Basket('basket');
+            basket.render($('#basket_wrapper'));
+            console.log(basket.basketItems);
+
+            $('.buy_good').on('click', function () {
+                var idProduct = parseInt($(this).attr('data-id'));
+                var price = parseInt($(this).parent().find('.product-price').text());
+                var goodsTitle = $(this).parent().find('.goods-title').text();
+
+                basket.add(idProduct,goodsTitle, price);
+                console.log(basket.basketItems);
+            });
+            $('#basket_list').on('click', '.basket__delete', function () {
+                basket.remove(this.dataset.index);
+            });
+
+
+
+
+
+        });
+    </script>
+    <style>
+        .good {
+            border: 1px solid grey;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        td{
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="basket_wrapper"></div>
+<hr>
+<div id="goods"></div>
+</body>
+</html>

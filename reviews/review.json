@@ -1,0 +1,13 @@
+{
+  "result": 1,
+  "comments": [
+    {
+      "id_comment": 1,
+      "text": "test text be here ONE"
+    },
+    {
+      "id_comment": 2,
+      "text": "test text be here TWO"
+    }
+  ]
+}
